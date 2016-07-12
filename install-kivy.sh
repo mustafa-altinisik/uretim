@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
+#Yararlanilan Adres http://mattrichardson.com/kivy-gpio-raspberry-pi-touch/index.html
+
 cd ~
+
+sudo su root -c "echo 'Acquire::http::Proxy "http://10.1.1.51:3128";' >> /etc/apt/apt.conf"
+
 sudo apt-get update && sudo apt-get -y upgrade
 sudo su root -c "echo 'deb http://vontaene.de/raspbian-updates/ . main' >> /etc/apt/sources.list"
 gpg --keyserver pgp.mit.edu --recv-keys 0C667A3E
