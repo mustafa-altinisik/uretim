@@ -68,6 +68,7 @@ class InputButton(Button):
 	counter = 1
 	def update(self, dt):
 		self.counter = self.counter + 1
+        self.text = str(self.counter)
 		if GPIO.input(buttonPin) == True:
 			self.state = 'normal'
 		else:
@@ -100,9 +101,9 @@ class MyApp(App):
 		speedSlider.bind(on_touch_down=update_speed, on_touch_move=update_speed)
 
 		# Add the UI elements to the layout:
-		#layout.add_widget(wimg)
+		layout.add_widget(wimg)
 		layout.add_widget(inputDisplay)
-		#layout.add_widget(outputControl)
+		layout.add_widget(outputControl)
 		layout.add_widget(beepButton)
 		layout.add_widget(speedSlider)
 
