@@ -75,7 +75,7 @@ class MyApp(App):
 
 	def build(self):
 		# Set up the layout:
-		layout = GridLayout(cols=5, spacing=30, padding=30, row_default_height=120
+		layout = GridLayout(cols=5, spacing=30, padding=30, row_default_height=120)
 
 		# Make the background gray:
 		with layout.canvas.before:
