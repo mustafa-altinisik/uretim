@@ -22,3 +22,5 @@ git clone https://github.com/kivy/kivy
 cd kivy
 python setup.py build
 sudo python setup.py install
+cd ~/uretim
+
