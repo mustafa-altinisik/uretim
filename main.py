@@ -89,7 +89,7 @@ class MyApp(App):
         inputDisplay = InputButton(text=str(InputButton.counter))
 
         # Schedule the update of the state of the GPIO input button:
-        Clock.schedule_interval(inputDisplay.update, 1.0/10000000.0)
+        Clock.schedule_interval(inputDisplay.update, 1.0/10000000000000000000000000.0)
 
         # Create the rest of the UI objects (and bind them to callbacks, if necessary):
         outputControl = ToggleButton(text="LED")
