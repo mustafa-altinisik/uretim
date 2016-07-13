@@ -83,7 +83,7 @@ class MyApp(App):
 			self.rect = Rectangle(size=(800,600), pos=layout.pos)
 
 		# Instantiate the first UI object (the GPIO input indicator):
-		inputDisplay = InputButton(text=counter)
+		inputDisplay = InputButton(text=str(counter))
 
 		# Schedule the update of the state of the GPIO input button:
 		Clock.schedule_interval(inputDisplay.update, 1.0/10.0)
