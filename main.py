@@ -91,7 +91,7 @@ class MyApp(App):
 		# Create the rest of the UI objects (and bind them to callbacks, if necessary):
 		outputControl = ToggleButton(text="LED")
 		outputControl.bind(on_press=press_callback)
-		beepButton = Button(text="Ottur")
+		beepButton = Button(text="BEEP!")
 		beepButton.bind(on_press=press_callback)
 		wimg = Image(source='logo.png')
 		speedSlider = Slider(orientation='vertical', min=1, max=30, value=speed)
