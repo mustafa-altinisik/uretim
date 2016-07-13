@@ -34,7 +34,7 @@ GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 # This callback will be bound to the LED toggle and Beep button:
 def press_callback(obj):
 	print("Button pressed,", obj.text)
-	if obj.text == u'Öttür':
+	if obj.text ==  'Ottur':
 		# turn on the beeper:
 		GPIO.output(beepPin, GPIO.HIGH)
 		# schedule it to turn off:
