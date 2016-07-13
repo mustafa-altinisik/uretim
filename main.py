@@ -30,7 +30,7 @@ GPIO.output(flashLedPin, GPIO.LOW)
 GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # Define some helper functions:
-counter=1
+
 # This callback will be bound to the LED toggle and Beep button:
 def press_callback(obj):
 	print("Button pressed,", obj.text)
@@ -65,8 +65,9 @@ def update_speed(obj, value):
 
 # Modify the Button Class to update according to GPIO input:
 class InputButton(Button):
+	counter = 1
 	def update(self, dt):
-		counter = counter + 1
+		self.counter = self.counter + 1
 		if GPIO.input(buttonPin) == True:
 			self.state = 'normal'
 		else:
@@ -84,7 +85,7 @@ class MyApp(App):
 			self.rect = Rectangle(size=(800,600), pos=layout.pos)
 
 		# Instantiate the first UI object (the GPIO input indicator):
-		inputDisplay = InputButton(text=str(counter))
+		inputDisplay = InputButton(text=str(InputButton.counter))
 
 		# Schedule the update of the state of the GPIO input button:
 		Clock.schedule_interval(inputDisplay.update, 1.0/10.0)
