@@ -66,6 +66,7 @@ def update_speed(obj, value):
 # Modify the Button Class to update according to GPIO input:
 class InputButton(Button):
 	def update(self, dt):
+		counter = counter + 1
 		if GPIO.input(buttonPin) == True:
 			self.state = 'normal'
 		else:
