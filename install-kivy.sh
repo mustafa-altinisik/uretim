@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+#raspberry pi icin kivy kurulum scripti
 #Yararlanilan Adres http://mattrichardson.com/kivy-gpio-raspberry-pi-touch/index.html
 
 cd ~
