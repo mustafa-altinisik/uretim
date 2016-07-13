@@ -71,37 +71,11 @@ class InputButton(Button):
 		else:
 			self.state = 'down'			
 
-class Uygulama(object):
-    def __init__(self):
-        self.sayi=1
-        self.araclar()
-    def araclar(self):#kullanılacak buton ve label
-        self.etiket=Label(text=0,fg="blue",font="Comic 20 bold")
-        self.etiket.pack()
-        self.buton=Button(text="Say",font="Comic 15 bold",command=self.say,width=5,height=3)
-        self.buton.pack()
-        self.buton2=Button(text="Sıfırla",font="Comic 15 bold",command=self.sifirla)
-        self.buton2.pack()
-        self.etiket1=Label(text=0,fg="blue",font="Comic 20 bold")
-        self.etiket1.pack()
-    def say(self):#sayacı birer birer arttırma işlemi
-        if self.etiket["text"]!=33:
-            self.etiket["text"]=self.sayi
-            self.sayi+=1
-        else:
-            self.sayi=0
-            self.etiket["text"]=self.sayi
-            self.etiket1["text"]+=1
-    def sifirla(self):#Sayacı sıfrla işlemi
-        self.sayi=1
-        self.etiket["text"]=0
-uyg=Uygulama()
-
 class MyApp(App):
 
 	def build(self):
 		# Set up the layout:
-		layout = GridLayout(cols=5, spacing=30, padding=30, row_default_height=150)
+		layout = GridLayout(cols=5, spacing=30, padding=30, row_default_height=140)
 
 		# Make the background gray:
 		with layout.canvas.before:
