@@ -80,6 +80,7 @@ class MyApp(App):
         # Set up the layout:
         layout = GridLayout(cols=5, spacing=30, padding=30, row_default_height=140)
 
+
         # Make the background gray:
         with layout.canvas.before:
             Color(.2, .2, .2, 1)
@@ -96,6 +97,9 @@ class MyApp(App):
         outputControl.bind(on_press=press_callback)
         beepButton = Button(text= "BEEP!")
         beepButton.bind(on_press=press_callback)
+        beepButton.markup=True
+        beepButton.color=(1,0,0,1)
+
         wimg = Image(source='logo.png')
         speedSlider = Slider(orientation='vertical', min=0.2, max=500, value=speed)
         speedSlider.bind(on_touch_down=update_speed, on_touch_move=update_speed)
