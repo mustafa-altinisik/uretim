@@ -93,7 +93,7 @@ class MyApp(App):
         Clock.schedule_interval(inputDisplay.update, 1.0 / 10.0)
 
         # Create the rest of the UI objects (and bind them to callbacks, if necessary):
-        outputControl = ToggleButton(text="LED")
+        outputControl = ToggleButton(text="Lamba")
         outputControl.bind(on_press=press_callback)
         outputControl.markup=True
         outputControl.color=(0,1,0,1)
