@@ -95,6 +95,8 @@ class MyApp(App):
         # Create the rest of the UI objects (and bind them to callbacks, if necessary):
         outputControl = ToggleButton(text="LED")
         outputControl.bind(on_press=press_callback)
+        outputControl.markup=True
+        outputControl.color=(0,1,0,1)
         beepButton = Button(text= "BEEP!")
         beepButton.bind(on_press=press_callback)
         beepButton.markup=True
