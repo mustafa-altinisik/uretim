@@ -70,7 +70,7 @@ class InputButton(Button):
     counter = 1
     def update(self, dt):
         self.text = str(self.counter)
-        self.counter = self.counter + 2
+        self.counter = self.counter + 1
         if GPIO.input(buttonPin) == True:
             self.state = 'normal'
         else:
