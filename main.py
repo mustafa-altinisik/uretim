@@ -40,7 +40,8 @@ def press_callback(obj):
         GPIO.output(beepPin, GPIO.HIGH)
         # schedule it to turn off:
         Clock.schedule_once(buzzer_off, .1)
-    if obj.text == 'LED':
+    if obj.text == 'Lamba':
+        #NOT:buton ismi ile yukaridaki kelimenin eslesmesi gerekmektedir.
         if obj.state == "down":
             print ("button on")
             GPIO.output(ledPin, GPIO.HIGH)
