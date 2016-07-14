@@ -105,6 +105,8 @@ class MyApp(App):
         wimg = Image(source='logo.png')
         speedSlider = Slider(orientation='vertical', min=0.2, max=500, value=speed)
         speedSlider.bind(on_touch_down=update_speed, on_touch_move=update_speed)
+        speedSlider.markup=True
+        speedSlider.color=(0,0,1,1)
 
         # Add the UI elements to the layout:
         layout.add_widget(wimg)
