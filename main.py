@@ -36,7 +36,7 @@ def press_callback(obj):
     print("Button pressed,", obj.text)
     if obj.text ==  'Buzzer':
         # turn on the beeper:
-        #buton ismi ile yukarıdaki kelimenin eşleşmesi gerekmektedir.
+        #buton ismi ile yukarıdaki kelimenin eslesmesi gerekmektedir.
         GPIO.output(beepPin, GPIO.HIGH)
         # schedule it to turn off:
         Clock.schedule_once(buzzer_off, .1)
