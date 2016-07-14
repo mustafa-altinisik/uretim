@@ -82,14 +82,14 @@ class MyApp(App):
 
         # Make the background gray:
         with layout.canvas.before:
-            Color(.2,.2,.2,1)
+            Color(1,0,0,1)
             self.rect = Rectangle(size=(800,600), pos=layout.pos)
 
         # Instantiate the first UI object (the GPIO input indicator):
         inputDisplay = InputButton(text=str(InputButton.counter))
 
         # Schedule the update of the state of the GPIO input button:
-        Clock.schedule_interval(inputDisplay.update, 1.0/10000000000000000000000000.0)
+        Clock.schedule_interval(inputDisplay.update, 1.0/1000,0)
 
         # Create the rest of the UI objects (and bind them to callbacks, if necessary):
         outputControl = ToggleButton(text="LED")
