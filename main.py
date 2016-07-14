@@ -34,7 +34,7 @@ GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 # This callback will be bound to the LED toggle and Beep button:
 def press_callback(obj):
     print("Button pressed,", obj.text)
-    if obj.text ==  'Ses':
+    if obj.text ==  'Buzzer':
         # turn on the beeper:
         #NOT:buton ismi ile yukaridaki kelimenin eslesmesi gerekmektedir.
         GPIO.output(beepPin, GPIO.HIGH)
@@ -99,7 +99,7 @@ class MyApp(App):
         outputControl.bind(on_press=press_callback)
         outputControl.markup=True
         outputControl.color=(0,1,0,1)
-        beepButton = Button(text= "Ses")
+        beepButton = Button(text= "Buzzer")
         beepButton.bind(on_press=press_callback)
         beepButton.markup=True
         beepButton.color=(1,0,0,1)
