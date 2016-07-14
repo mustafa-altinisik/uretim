@@ -97,7 +97,7 @@ class MyApp(App):
         outputControl.bind(on_press=press_callback)
         outputControl.markup=True
         outputControl.color=(0,1,0,1)
-        beepButton = Button(text= "BEEP!")
+        beepButton = Button(text= "Buzzer")
         beepButton.bind(on_press=press_callback)
         beepButton.markup=True
         beepButton.color=(1,0,0,1)
