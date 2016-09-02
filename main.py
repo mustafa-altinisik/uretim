@@ -1,126 +1,61 @@
-import kivy
-kivy.require('1.0.6') # replace with your current kivy version !
+# -*- coding: utf-8 -*-
 
 from kivy.app import App
-from kivy.uix.button import Button
-from kivy.uix.togglebutton import ToggleButton
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.image import Image
-from kivy.uix.slider import Slider
-from kivy.clock import Clock
-from kivy.graphics import Color, Rectangle
+from kivy.lang import Builder
+from kivy.core.window import Window
 
-import RPi.GPIO as GPIO
+Window.clearcolor = (0, 0, 0, 0)
 
-#for now, use a global for blink speed (better implementation TBD):
-speed = 1.0
+kv='''
+BoxLayout:
+    orientation: "vertical"
+    BoxLayout:
+        Label:
+            id: "durum"
+            text: "Makine Durumu:"
+            size_hint_x: 1
+        Button:
+            id: "durumbuton"
+            color: (0, 1, 0, 1)
+            size_hint_x: 2
+            text: "Çalışıyor"
 
-# Set up GPIO:
-beepPin = 17
-ledPin = 27
-buttonPin = 22
-flashLedPin = 10
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(beepPin, GPIO.OUT)
-GPIO.output(beepPin, GPIO.LOW)
-GPIO.setup(ledPin, GPIO.OUT)
-GPIO.output(ledPin, GPIO.LOW)
-GPIO.setup(flashLedPin, GPIO.OUT)
-GPIO.output(flashLedPin, GPIO.LOW)
-GPIO.setup(buttonPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-# Define some helper functions:
+    BoxLayout:
+        Label:
+            id: "yapilantext"
+            text: "Yaılan İş:"
+            size_hint_x: 1
+        TextInput:
+            id: "yapilan"
+            size_hint_x: 2
+            color: (0, 0, 0, 1)
 
-# This callback will be bound to the LED toggle and Beep button:
-def press_callback(obj):
-    print("Button pressed,", obj.text)
-    if obj.text ==  'Buzzer':
-        # turn on the beeper:
-        #NOT:buton ismi ile yukaridaki kelimenin eslesmesi gerekmektedir.
-        GPIO.output(beepPin, GPIO.HIGH)
-        # schedule it to turn off:
-        Clock.schedule_once(buzzer_off, .1)
-    if obj.text == 'Lamba':
-        #NOT:buton ismi ile yukaridaki kelimenin eslesmesi gerekmektedir.
-        if obj.state == "down":
-            print ("button on")
-            GPIO.output(ledPin, GPIO.HIGH)
-        else:
-            print ("button off")
-            GPIO.output(ledPin, GPIO.LOW)
 
-def buzzer_off(dt):
-    GPIO.output(beepPin, GPIO.LOW)
+    BoxLayout:
+        Label:
+            id: "cevrimsuresitext"
+            text: "Çevrim Süresi:"
+            size_hint_x: 1
+        Button:
+            id: "cevrimsuresi"
+            size_hint_x: 2
+    BoxLayout:
+        Label:
+            id: "isinaditext"
+            text: "İşin Adı:"
+            size_hint_x: 1
+        TextInput:
+            id: "isinadi"
+            size_hint_x: 2
 
-# Toggle the flashing LED according to the speed global
-# This will need better implementation
-def flash(dt):
-    global speed
-    GPIO.output(flashLedPin, not GPIO.input(flashLedPin))
-    Clock.schedule_once(flash, 1.0/speed)
+'''
 
-# This is called when the slider is updated:
-def update_speed(obj, value):
-    global speed
-    print("Updating speed to:" + str(obj.value))
-    speed = obj.value
-
-# Modify the Button Class to update according to GPIO input:
-class InputButton(Button):
-    counter = 1
-    def update(self, dt):
-        self.text = str(self.counter)
-        self.counter = self.counter + 1
-        if GPIO.input(buttonPin) == True:
-            self.state = 'normal'
-        else:
-            self.state = 'down'
-
-class MyApp(App):
+class girisFormu(App):
 
     def build(self):
-        # Set up the layout:
-        layout = GridLayout(cols=5, spacing=30, padding=30, row_default_height=140)
+        self.root=Builder.load_string(kv)
+        return self.root
 
 
-        # Make the background gray:
-        with layout.canvas.before:
-            Color(.2, .2, .2, 1)
-            self.rect = Rectangle(size=(800,600), pos=layout.pos)
-
-        # Instantiate the first UI object (the GPIO input indicator):
-        inputDisplay = InputButton(text=str(InputButton.counter))
-
-        # Schedule the update of the state of the GPIO input button:
-        Clock.schedule_interval(inputDisplay.update, 1.0 / 10.0)
-
-        # Create the rest of the UI objects (and bind them to callbacks, if necessary):
-        outputControl = ToggleButton(text="Lamba")
-        outputControl.bind(on_press=press_callback)
-        outputControl.markup=True
-        outputControl.color=(0,1,0,1)
-        beepButton = Button(text= "Buzzer")
-        beepButton.bind(on_press=press_callback)
-        beepButton.markup=True
-        beepButton.color=(1,0,0,1)
-
-        wimg = Image(source='logo.png')
-        speedSlider = Slider(orientation='vertical', min=0.2, max=500, value=speed)
-        speedSlider.bind(on_touch_down=update_speed, on_touch_move=update_speed)
-        speedSlider.markup=True
-        speedSlider.color=(0,0,1,1)
-
-        # Add the UI elements to the layout:
-        layout.add_widget(wimg)
-        layout.add_widget(inputDisplay)
-        layout.add_widget(outputControl)
-        layout.add_widget(beepButton)
-        layout.add_widget(speedSlider)
-
-        # Start flashing the LED
-        Clock.schedule_once(flash, 1.0/speed)
-
-        return layout
-
-if __name__ == '__main__':
-    MyApp().run()
+girisFormu().run()
