@@ -27,6 +27,7 @@ BoxLayout:
             text: "Yaılan İş:"
             size_hint_x: 1
         TextInput:
+            input_type=number
             id: "yapilan"
             size_hint_x: 2
             color: (0, 0, 0, 1)
