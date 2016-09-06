@@ -60,7 +60,7 @@ class Uygulama(App):
 #
 #
     def build(self, *args):
-         self.title = u"Otomat Sayacı"
+        self.title = u"Otomat Sayacı"
         Ekran = BoxLayout(orientation = 'vertical')
 
         sira1 = BoxLayout()
