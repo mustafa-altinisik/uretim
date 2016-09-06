@@ -44,7 +44,7 @@ class Ekran(BoxLayout):
 
 
 
-#Window.size = (800, 480)
+Window.size = (800, 480)
 
 Window.clearcolor = (0, 0, 0, 0)
 
