@@ -24,7 +24,7 @@ BoxLayout:
     BoxLayout:
         Label:
             id: "yapilantext"
-            text: "Yaılan İş:"
+            text: "Yaılan İşş:"
             size_hint_x: 1
         TextInput:
             id: "yapilan"
