@@ -95,7 +95,7 @@ class Uygulama(App):
         Ekran.add_widget(sira4)
 
         GPIO.add_event_detect(buttonPin, GPIO.RISING, callback=self.tusaBasildi, bouncetime=50)
-        return Demo()
+
         return Ekran
 
 
