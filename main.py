@@ -4,7 +4,7 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.core.window import Window
 
-Window.clearcolor = (0, 0, 0, 0)
+Window.clearcolor = (0, 0, 0, 1)
 
 kv='''
 BoxLayout:
