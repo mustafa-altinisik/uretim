@@ -17,7 +17,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.core.window import Window
 import os
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 speed = 1.0
 beepPin = 17
 ledPin = 27
