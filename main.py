@@ -46,7 +46,7 @@ class Ekran(BoxLayout):
 
 Window.size = (800, 480)
 
-Window.clearcolor = (0, 0, 0, 0)
+Window.clearcolor = (0, 0, 0, 1)
 
 class Uygulama(App):
     def tusaBasildi(self, *args):
