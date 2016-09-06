@@ -50,7 +50,6 @@ Window.clearcolor = (0, 0, 0, 0)
 
 class Uygulama(App):
     def tusaBasildi(self, *args):
-
         keyboard = Window.request_keyboard(self,input_type='number')
 
         if keyboard.widget:
